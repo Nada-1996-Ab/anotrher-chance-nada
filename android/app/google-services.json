@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "738720566167",
+    "firebase_url": "https://another-chance-ed23a-default-rtdb.firebaseio.com",
+    "project_id": "another-chance-ed23a",
+    "storage_bucket": "another-chance-ed23a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738720566167:android:08e41046b24107d8fdd2d2",
+        "android_client_info": {
+          "package_name": "com.example.another_chance_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738720566167-1ne0a9fmk64auetque2vvr7hoea5sr3d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALpTAIIbBIWI_hZJbM0ni6WC-1EpZ8R64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738720566167-1ne0a9fmk64auetque2vvr7hoea5sr3d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
