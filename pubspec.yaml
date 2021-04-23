@@ -24,10 +24,20 @@ dependencies:
   adobe_xd:
   flutter:
     sdk: flutter
+  flutter_localizations:
+      sdk: flutter
   cloud_firestore:
   firebase_core:
   firebase_auth:
   firebase_analytics:
+  flutter_icons:
+  flutter_svg:
+  animated_splash_screen:
+  image_picker:
+  firebase_storage:
+  permission_handler:
+  image_cropper:
+  flutter_login:
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -52,6 +62,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - lib/lang/ar.json
+    - lib/lang/en.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

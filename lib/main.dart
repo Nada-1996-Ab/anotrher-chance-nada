@@ -1,43 +1,100 @@
-import 'package:another_chance_app/forms.dart';
-import 'package:another_chance_app/languges.dart';
-import 'package:another_chance_app/login.dart';
-import 'package:another_chance_app/logo.dart';
-import 'package:another_chance_app/search.dart';
-import 'package:another_chance_app/signin.dart';
-import 'package:another_chance_app/usertype1.dart';
-import 'package:another_chance_app/usertype2.dart';
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
-void main() {
+
+import 'package:another_chance_app/aboutus.dart';
+import 'package:another_chance_app/accountsetting.dart';
+import 'package:another_chance_app/accountsetting1.dart';
+import 'package:another_chance_app/adposting.dart';
+import 'package:another_chance_app/emptybag.dart';
+import 'package:another_chance_app/home.dart';
+import 'package:another_chance_app/localization/set_localization.dart';
+import 'package:another_chance_app/orderconfirmation.dart';
+import 'package:another_chance_app/routes/custom_route.dart';
+import 'package:another_chance_app/routes/route-names.dart';
+import 'package:another_chance_app/searchforitems.dart';
+import 'package:another_chance_app/shippingadress.dart';
+import 'package:another_chance_app/signup.dart';
+import 'package:another_chance_app/uploadimage.dart';
+import 'package:another_chance_app/uploadimage1.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:another_chance_app/firstpage.dart';
+import 'package:another_chance_app/language.dart';
+import 'package:another_chance_app/logo.dart';
+import'package:another_chance_app/Loginpage.dart';
+
+import 'package:flutter/cupertino.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+
+  static void setLocale(BuildContext context, Locale locale) {
+    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    state.setLocale(locale);
+  }
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  Locale _local;
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _local = locale;
+    });
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+
+        // primarySwatch: Colors.blue,
       ),
       home: logo(),
+
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: CustomRoute.allRoutes,
+      initialRoute: firstpageRoute,
+      locale: _local,
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('ar', 'SA')
+      ],
+      localizationsDelegates: [
+        SetLocalization.localizationsDelegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      localeResolutionCallback: (deviceLocal, supportedLocales) {
+        for(var local in supportedLocales) {
+          if(local.languageCode == deviceLocal.languageCode && local.countryCode == deviceLocal.countryCode) {
+            return deviceLocal;
+          }
+        }
+        return supportedLocales.first;
+      },
+
     );
   }
 }
+
+
+
+
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -123,3 +180,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
+
